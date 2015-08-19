@@ -46,14 +46,6 @@ var Stack = function(){
 
   someInstance.size = function(){
 
-    // var count = 0;
-
-    // _.each(storage, function(item) {
-    //   count++;
-    // });
-
-    // return count;
-
     return Object.keys(storage).length;
 
   };
