@@ -29,7 +29,7 @@ var stackMethods = {
     return popValue;
   },
 
-  size: function(count) {
+  size: function() {
 
     return Object.keys(this.storage).length;
 

@@ -8,34 +8,33 @@ var Queue = function() {
   return someInstance;
 };
 
-var queueMethods = {
+var queueMethods = {};
 
-  enqueue: function(value) {
+queueMethods.enqueue = function(value) {
 
-    var currentSize = this.size();
+  var currentSize = this.size();
 
-    this.storage[currentSize] = value;
+  this.storage[currentSize] = value;
 
-    return currentSize;
-  },
+  return currentSize;
+};
 
-  dequeue: function() {
-    var popVariable = this.storage[0]
-    delete this.storage[0]
-    var currentSize = this.size()
+queueMethods.dequeue = function() {
+  var popVariable = this.storage[0]
+  delete this.storage[0]
+  var currentSize = this.size()
 
-    for (var i = 1; i <= currentSize; i++) {
-      this.storage[i - 1] = this.storage[i]
-      if (i === currentSize) {
-        delete this.storage[i]
-      }
+  for (var i = 1; i <= currentSize; i++) {
+    this.storage[i - 1] = this.storage[i]
+    if (i === currentSize) {
+      delete this.storage[i]
     }
-    return popVariable;
-  },
-
-  size: function(count) {
-
-    return Object.keys(this.storage).length;
-
   }
+  return popVariable;
+};
+
+queueMethods.size = function() {
+
+  return Object.keys(this.storage).length;
+
 };
