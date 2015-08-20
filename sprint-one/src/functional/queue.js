@@ -7,44 +7,30 @@ var Queue = function(){
   // Implement the methods below
 
   someInstance.enqueue = function(value){
+    var currentSize = someInstance.size();
 
-    var sizeNow = someInstance.size();
+    storage[currentSize] = value;
 
-    storage[sizeNow] = value;
-
+    return currentSize;
   };
 
   someInstance.dequeue = function(){
+    var popVariable = storage[0]
+    delete storage[0]
+    var currentSize = someInstance.size()
 
-    var sizeNow = someInstance.size();
-
-    if (sizeNow === 0) {
-      return;
-    }
-
-    var result = storage[0];
-
-    if (sizeNow === 1) {
-      delete storage[0];
-    }
-
-    for (var i = 1; i < sizeNow; i++) {
-
-      storage[i-1] = storage[i];
-      if (i === sizeNow-1) {
-        delete storage[i];
+    for (var i = 1; i <= currentSize; i++) {
+      storage[i - 1] = storage[i]
+      if (i === currentSize) {
+        delete storage[i]
       }
-
     }
-
-    return result;
-
+    
+    return popVariable
   };
 
   someInstance.size = function(){
-
     return Object.keys(storage).length;
-
   };
 
   return someInstance;

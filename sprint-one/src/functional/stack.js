@@ -7,47 +7,27 @@ var Stack = function(){
   // Implement the methods below
   someInstance.push = function(value){
 
-    var sizeNow = someInstance.size();
+    var currentSize = someInstance.size();
 
-    for (var i = sizeNow; i > 0; i--) {
-      storage[i] = storage[i-1];
-    }
+    storage[currentSize] = value;
 
-    storage[0] = value;
-
+    return currentSize;
   };
 
   someInstance.pop = function(){
 
-    var sizeNow = someInstance.size();
+    var currentSize = someInstance.size();
 
-    if (sizeNow === 0) {
-      return;
-    }
+    var popValue = storage[currentSize-1];
 
-    var result = storage[0];
+    delete storage[currentSize-1];
 
-    if (sizeNow === 1) {
-      delete storage[0];
-    }
-
-    for (var i = 1; i < sizeNow; i++) {
-
-      storage[i-1] = storage[i];
-      if (i === sizeNow-1) {
-        delete storage[i];
-      }
-
-    }
-
-    return result;
+    return popValue;
 
   };
 
   someInstance.size = function(){
-
     return Object.keys(storage).length;
-
   };
 
   return someInstance;
